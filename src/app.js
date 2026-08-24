@@ -10,7 +10,7 @@ const { userAuth } = require("./midlleware/auth");
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/requests");
-
+const userRouter = require("./routes/user");
 server.use(express.json());
 server.use(cookieParser());
 
@@ -96,6 +96,7 @@ server.use(cookieParser());
 server.use("/auth", authRouter);
 server.use("/profile", profileRouter);
 server.use("/requests", requestRouter);
+server.use("/user", userRouter);
 
 connectDB()
   .then(() => {

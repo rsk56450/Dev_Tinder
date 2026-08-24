@@ -13,7 +13,7 @@ const connectionRequestSchema = new mongoose.Schema(
     status: {
       type: String,
       enum: {
-        values: ["ignore", "intrested", "accepted", "rejected"],
+        values: ["ignore", "intrested", "accept", "reject"],
         message: "{VALUE} is incorrect/Invalid status",
       },
     },
@@ -22,6 +22,16 @@ const connectionRequestSchema = new mongoose.Schema(
     timestamps: true,
   },
 );
+
+connectionRequestSchema.index({fromUserId: 1, toUserId: 1});
+
+connectionRequestSchema.pre("save", function () {
+  const connectionRequest = this;
+  console.log("---reached-----q1111--->", connectionRequest)
+  if (connectionRequest.fromUserId.equals(connectionRequest.toUserId)) {
+    throw new Error("Connection request cannot be sent to yourself");
+  }
+})
 
 const ConnectionRequest = new mongoose.model(
   "ConnectionRequest",
