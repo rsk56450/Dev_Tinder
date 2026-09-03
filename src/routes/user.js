@@ -3,7 +3,7 @@ const userRouter = express.Router();
 const { userAuth } = require("../midlleware/auth");
 const ConnectionRequest = require("../config/models/connectionRequest");
 const User = require("../config/models/user");
-const populateFromUserCollection = ["firstName"]
+const populateFromUserCollection = ["firstName","lastName","photoUrl","about","age","gender"]
 
 userRouter.get("/requests/received", userAuth, async (req, res) => { 
     try { 
