@@ -4,6 +4,7 @@ const { userAuth } = require('../midlleware/auth');
 const { validateProfileEditData } = require('../utils/validation');
 const User = require('../config/models/user');
 const bcrypt = require('bcrypt');
+const validator = require('validator');
 
 profileRouter.get("/getProfile",userAuth, async (req, res) => { 
     try { 
