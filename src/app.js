@@ -16,7 +16,7 @@ const cors = require("cors");
 
 
 server.use(cors({
-  origin: "https://sitbro.netlify.app/",
+  origin: "*",
   credentials:true
 }))
 server.use(express.json());
