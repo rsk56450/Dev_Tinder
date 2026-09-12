@@ -16,8 +16,10 @@ const cors = require("cors");
 
 
 server.use(cors({
-  origin: "https://sitbro.netlify.app",
-  credentials:true
+  origin: ["http://localhost:5173", "https://sitbro.netlify.app"],
+  credentials:true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }))
 server.use(express.json());
 server.use(cookieParser());
