@@ -7,7 +7,7 @@ const userAuth = async (req, res, next) => {
       res.status(401).send("Unauthorized");
     }
 
-    const decodedMessage = jwt.verify(cookiesToken, "Rohit@123");
+    const decodedMessage = jwt.verify(cookiesToken, process.env.JWT_SECRET);
     const userId = decodedMessage._id;
 
     const user = await User.findById(userId);

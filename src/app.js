@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const express = require("express");
 const { connectDB } = require("./config/database");
 const server = express();
@@ -18,8 +20,6 @@ const cors = require("cors");
 server.use(cors({
   origin: "*",
   credentials:true,
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  allowedHeaders: ["Content-Type", "Authorization"],
 }))
 server.use(express.json());
 server.use(cookieParser());
